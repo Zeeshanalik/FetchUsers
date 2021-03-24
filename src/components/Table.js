@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 const Table = ({ items }) => {
   return (
     <>
-      <table border="1">
+      <table border='1'>
         <thead>
           <tr>
             <th> User Id</th>
