@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import Table from "./components/Table.js"
+const App = () => {
+const [items, setItems] = useState([])
+const fetchData = () => 
+  axios.request({
+    method:'GET',
+    url:'https://jsonplaceholder.typicode.com/users'
+  })
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+useEffect(() => {
+  fetchData().then((response)=>{
+  setItems(response.data)
+  
+
+  })
+}, [setItems])
+
+  const propsObject = {
+    items,
+    setItems
+
+  }
+return (
+  <> 
+    <h1></h1>
+    <Table propsObject={propsObject}/>
+  </>
+)
 }
+export default App
 
-export default App;
